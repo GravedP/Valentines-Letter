@@ -24,7 +24,7 @@ function spawnHeart() {
     heart.classList.add('shape-container', 'shape-container--with-indicators');
     heart.innerHTML = `
         <div class="shape">
-            <img src="/pictures/heart.png" width="30px" height="30px">
+            <img src="pictures/heart.png" width="30px" height="30px">
         </div>
     `;
 
