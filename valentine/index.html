@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div>
+        <div class="letter">
+            <div id="invisiblecont">
+                <div style="transform: rotate(180deg);">
+                    <div id="oben2"></div>
+                </div>
+                <div id="lettercontainer" style="display:flex; justify-content: center;">
+                </div>
+                <div id="letterfull"></div>
+                <div style="width: 30vw; height: 35vh; position: absolute; z-index: 10;" id="heartsinecontainer">
+                    <div id="links"></div>
+                    <div id="rechts"></div>
+                    <div class="unten"></div>
+                </div>
+                <div id="oben"></div>
+                <div id="obeninnen"></div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="openMe" id="openMeID" onclick="myFunction()">Open Envelope</button>
+        </div>
+        <div class="buttons">
+            <button class="readNext" id="nextbutt" onclick="readNext()" disabled>Read next</button>
+            <button class="readBefore" id="befbutt" onclick="readBefore()" disabled>Read before</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="/js/letterscript.js"></script>
+<script src="/js/script2.js"></script>
+<script src="/js/heartscript.js"></script>

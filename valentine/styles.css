@@ -1,0 +1,245 @@
+
+* {
+    font-family: "Autour One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+  
+body {
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: 'Clicker Script', serif;
+    overflow: visible;
+    }
+
+html, body {margin: 0; height: 100%; overflow: hidden}
+
+.letter{
+    position: relative;
+    height: 35vh;
+    width: 30vw;
+    box-shadow: 10px 10px rgba(224, 191, 184, 0.2);
+    display: inline-block;
+}
+
+#letterfull{
+    position: absolute;
+    height: 35vh;
+    width: 30vw;
+    z-index: 4;
+}
+#obeninnen{
+    position: relative;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-top-width: 0;
+    border-left-width: 15vw;
+    border-bottom-width: 17.5vh;
+    border-right-width: 15vw;
+    border-color: transparent transparent #8a6862 transparent;
+    transform: rotate(180deg);
+    z-index: 4;
+}
+#oben{
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-top-width: 17.5vh;
+    border-left-width: 15vw;
+    border-bottom-width: 0;
+    border-right-width: 15vw;
+    border-color: #e1b2aa transparent transparent transparent;
+    transition: border-top-width 0.5s, border-bottom-width 0.5s;
+    position: absolute;
+    z-index: 7;
+}
+#oben2{
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-top-width: 0;
+    border-left-width: 15vw;
+    border-bottom-width: 0;
+    border-right-width: 15vw;
+    border-color: transparent transparent #e1b2aa transparent;
+    transform: rotate(180deg);
+    transition: border-top-width 0.5s, border-bottom-width 0.5s;
+    position: absolute;
+    z-index: 2;
+    transition-timing-function: ease-out;
+}
+
+#links{
+    left: 0;
+    top: 0;
+    position: absolute;
+    border-style: solid;
+    width: 0px;
+    height: 0px;
+    border-top-width: 17.6vh;
+    border-left-width: 15.2vw;
+    border-bottom-width: 17.6vh;
+    border-right-width: 0;
+    border-color: transparent transparent transparent #E0BFB8;
+    z-index: 10;
+}
+#rechts{
+    right: 0;
+    top: 0;
+    position: absolute;
+    border-style: solid;
+    width: 0px;
+    height: 0px;
+    border-top-width: 17.6vh;
+    border-left-width: 0;
+    border-bottom-width: 17.6vh;
+    border-right-width: 15.2vw;
+    border-color: transparent #E0BFB8 transparent transparent;
+    z-index: 10;
+}
+.theletter{
+    background-color: white;
+    position: absolute;
+    width: 20vw;
+    height: 30vh;
+    bottom: 0;
+    z-index: 7;
+    transition: bottom 1s, width 1s, height 1s, font-size 1s, transform 1.7s;
+}
+
+.unten{
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-top-width: 0;
+    border-left-width: 15vw;
+    border-bottom-width: 17.5vh;
+    border-right-width: 15vw;
+    border-color: transparent transparent #e1b2aa transparent;
+    position: absolute;
+    z-index: 10;
+}
+
+.buttons{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttons button{
+    border: none;
+    background-color: white;
+    color: #ee61bd;
+    width: 10vw;
+    height: 5vh;
+    border-radius: 10px;
+    transition: width 0.5s, height 0.5s;
+}
+
+
+button:hover{
+    background-color: #fdb2e7;
+    color: white;
+    height: 6vh;
+    width: 11vw;
+}
+
+#invisiblecont{
+    height: 35vh;
+    width: 30vw;
+    display: inline-block;
+}
+
+
+/* alles für sine */
+
+@property --progress {
+    initial-value: 0;
+    inherits: false;
+    syntax: '<number>';
+  }
+  
+  @keyframes progress {
+    from {
+      --progress: 0;
+    }
+    to {
+      --progress: 1;
+    }
+  }
+  
+  .shape-container {
+    transform: rotate(270deg) translateX(20%);
+    --PI: 3.1415;
+    --WAVE-COUNT: 1; /* number of waves to do over the element's width */
+    --TOTAL-ANGLE: calc(var(--WAVE-COUNT) * 2 * var(--PI)); /* one wave is 2PI radians */
+    --UNIT: 1vw; /* we need to use the same unit for all calculations. Keep variables unit-less as long as possible, and only apply units when assigning to css properties */
+    --r: 2.5; /* radius in --UNITs of circle we'll use as reference */
+    --CONTAINER-WIDTH: 50; /* container's width in --UNITs */
+    
+    --x: calc(var(--progress) * var(--CONTAINER-WIDTH)); /* current x-position in --UNITs */
+    --ROTATION-PER-LENGTH-UNIT: calc(var(--TOTAL-ANGLE) / var(--CONTAINER-WIDTH));
+    --alpha-reference-angle: calc(var(--ROTATION-PER-LENGTH-UNIT) * var(--x) * 1rad); /* current angle of reference circle */
+    --y: calc(-1 * var(--r) * sin(var(--alpha-reference-angle))); /* current y-position in --UNITs; multiply by -1 because in math positive values are upward, in css downwards */
+    --x-with-unit: calc(var(--x) * var(--UNIT));
+    --y-with-unit: calc(var(--y) * var(--UNIT));
+    --tan: calc(-1 * var(--r) * var(--ROTATION-PER-LENGTH-UNIT) * cos(var(--alpha-reference-angle)));
+    --beta-tangent-angle: atan(var(--tan));
+  
+    position: fixed;
+    left: 25vw;
+    width: calc(var(--CONTAINER-WIDTH) * var(--UNIT));
+    animation: progress 10s linear infinite;
+
+  }
+  
+  .shape {
+    transform: rotate(90deg);
+    --shape-width: 25px;
+    --shape-height: 5px;
+    position: absolute;
+    z-index: 1;
+    top: calc( -0.5 * var(--shape-height));
+    left: calc( -0.5 * var(--shape-width));
+    width: var(--shape-width);
+    height: var(--shape-height);
+    translate: var(--x-with-unit) var(--y-with-unit);
+    rotate: var(--beta-tangent-angle);
+  }
+  
+  
+  
+  /* code below for demonstration purposes only: dotted helper lines 
+  
+  .shape-container--with-indicators {
+    border-top: 1px dotted hotpink;
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(-1 * var(--r) * var(--UNIT));
+      width: 100%;
+      height: 0;
+      border-top: 1px dotted #ccc;
+    }
+  
+    &::after {
+      top: calc(var(--r) * var(--UNIT));
+    }
+  }
+
+*/
